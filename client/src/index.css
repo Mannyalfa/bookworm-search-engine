@@ -15,3 +15,8 @@ h6 {
   font-weight: 300;
   font-style: italic;
 }
+
+.jumbotron {
+  padding-top: 0rem !important;
+
+}

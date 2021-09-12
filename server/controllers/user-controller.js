@@ -11,7 +11,7 @@ module.exports = {
     });
 
     if (!foundUser) {
-      return res.status(400).json({ message: 'Cannot find a user with this id!' });
+      return res.status(400).json({ message: 'Cannot find a user with this id' });
     }
 
     res.json(foundUser);
@@ -21,7 +21,7 @@ module.exports = {
     const user = await User.create(body);
 
     if (!user) {
-      return res.status(400).json({ message: 'Something is wrong!' });
+      return res.status(400).json({ message: 'Something is wrong' });
     }
     const token = signToken(user);
     res.json({ token, user });
@@ -37,7 +37,7 @@ module.exports = {
     const correctPw = await user.isCorrectPassword(body.password);
 
     if (!correctPw) {
-      return res.status(400).json({ message: 'Wrong password!' });
+      return res.status(400).json({ message: 'Wrong password' });
     }
     const token = signToken(user);
     res.json({ token, user });
