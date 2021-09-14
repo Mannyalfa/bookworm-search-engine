@@ -15,7 +15,6 @@ const AppNavbar = () => {
       <Navbar bg='info' variant='dark' expand='lg'>
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
-        
               <img src="https://fontmeme.com/permalink/210912/7d0fc50c18996c6035f8ace8c3b95e73.png" alt="bookworm" border="0"></img>
               <img src={google} alt="powered by google" />
           </Navbar.Brand>
@@ -25,11 +24,10 @@ const AppNavbar = () => {
               <Nav.Link as={Link} to='/'>
                 Search For Books
               </Nav.Link>
-              {/* if user is logged in show saved books and logout */}
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
-                  Your Saved Book Collection
+                  Saved Books
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
@@ -40,14 +38,12 @@ const AppNavbar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      {/* set modal data up */}
       <Modal
         size='lg'
         show={showModal}
         onHide={() => setShowModal(false)}
         aria-labelledby='signup-modal'>
-        {/* tab container to do either signup or login component */}
-        <Tab.Container defaultActiveKey='login'>
+``        <Tab.Container defaultActiveKey='login'>
           <Modal.Header closeButton>
             <Modal.Title id='signup-modal'>
               <Nav variant='pills'>

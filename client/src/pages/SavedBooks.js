@@ -31,7 +31,7 @@ const SavedBooks = () => {
   };
 
   if (loading) {
-    return <h2>LOADING...</h2>;
+    return <h2>Just a sec...</h2>;
   }
 
   return (
@@ -47,7 +47,7 @@ const SavedBooks = () => {
       <Container>
         <h2>
           {userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${
+            ? `You have ${userData.savedBooks.length} saved ${
                 userData.savedBooks.length === 1 ? "book" : "books"
               }:`
             : "You have no saved books"}
