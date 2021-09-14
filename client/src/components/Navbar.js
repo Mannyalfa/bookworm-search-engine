@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
-
+import google from "../../src/images/google.jpg"
 import Auth from '../utils/auth';
 
 const AppNavbar = () => {
@@ -15,7 +15,9 @@ const AppNavbar = () => {
       <Navbar bg='info' variant='dark' expand='lg'>
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
-            <strong><i>BookWorm!</i></strong> powered by Google
+        
+              <img src="https://fontmeme.com/permalink/210912/7d0fc50c18996c6035f8ace8c3b95e73.png" alt="bookworm" border="0"></img>
+              <img src={google} alt="powered by google" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
@@ -27,7 +29,7 @@ const AppNavbar = () => {
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
-                    See Your Books
+                  Your Saved Books
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>

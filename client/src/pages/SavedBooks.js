@@ -1,79 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import {useQuery, useMutation} from '@apollo/react-hooks';
-import {GET_ME} from '../utils/queries';
-import {REMOVE_BOOK} from '../utils/mutations';
-import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
-import { removeBookId } from '../utils/localStorage';
+import React, { useState, useEffect } from "react";
+import { Jumbotron, Container, CardColumns, Card, Button } from "react-bootstrap";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { GET_ME } from "../utils/queries";
+import { REMOVE_BOOK } from "../utils/mutations";
+import { getMe, deleteBook } from "../utils/API";
+import Auth from "../utils/auth";
+import { removeBookId } from "../utils/localStorage";
+import bookworm from "../../src/images/worm.jpg"
 
 
 const SavedBooks = () => {
-  const {loading, data} = useQuery(GET_ME);
+  const { loading, data } = useQuery(GET_ME);
+  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+  const userData = data?.me || {};
+  // use this to determine if `useEffect()` hook needs to run again
+  const userDataLength = Object.keys(userData).length;
 
-  const[userData, setData] = useState(loading ? null : data.me);
-  // const newdata = {...userData?.me};
-  const [removeBook, {error}] = useMutation(REMOVE_BOOK);
-
-  // useEffect(() =>{
-  //   if(userData){
-  //     console.log('useeffect!!')
-  //   }
-  // },[userData])
-  
-  if(!userData){
-      return null
-  }
-
+  // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
-    try {
-       const data = await removeBook({
-        variables: {bookId},
-      });
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-      // update state of books:
-      setData(()=>{
-        return{
-          ...userData,
-          savedBooks: data.data.removeBook.savedBooks
-        }
-      })
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await removeBook({ variables: { bookId: bookId } });
+
+      // upon success, remove book's id from localStorage
+      removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
-    removeBookId(bookId);
   };
 
+  // if data isn't here yet, say so
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-primary'>
+      <Jumbotron fluid className="text-light bg-info">
         <Container>
+        <div id="worm">
+            <img src={bookworm} alt="bookworm" />
+          </div>
           <h1>Your saved book collection</h1>
         </Container>
       </Jumbotron>
       <Container>
         <h2>
-          {!loading && userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
-            : 'You have no saved books'
-          }
+          {userData.savedBooks.length
+            ? `Viewing ${userData.savedBooks.length} saved ${
+                userData.savedBooks.length === 1 ? "book" : "books"
+              }:`
+            : "You have no saved books"}
         </h2>
         <CardColumns>
-          {!loading && userData.savedBooks.map((book) => {
-              return (
-                <Card key={book.bookId} border='dark'>
-                  {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
-                  <Card.Body>
-                    <Card.Title>{book.title}</Card.Title>
-                    <p className='small'>Authors: {book.authors}</p>
-                    <Card.Text>{book.description}</Card.Text>
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
-                      Delete
-                    </Button>
-                  </Card.Body>
-                </Card>
-              );
-            })
-          }
+          {userData.savedBooks.map((book) => {
+            return (
+              <Card key={book.bookId} border="dark">
+                {book.image ? (
+                  <Card.Img
+                    src={book.image}
+                    alt={`The cover for ${book.title}`}
+                    variant="top"
+                  />
+                ) : null}
+                <Card.Body>
+                  <Card.Title>{book.title}</Card.Title>
+                  <p className="small">Authors: {book.authors}</p>
+                  <Card.Text>{book.description}</Card.Text>
+                  <Button
+                    className="btn-block btn-danger"
+                    onClick={() => handleDeleteBook(book.bookId)}
+                  >
+                    Delete
+                  </Button>
+                </Card.Body>
+              </Card>
+            );
+          })}
         </CardColumns>
       </Container>
     </>

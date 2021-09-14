@@ -1,5 +1,5 @@
 {
-  "name": "googlebooks-app",
+  "name": "bookworm-search-engine",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -12,15 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@work.github.com:arosenkranz/googlebooks-app.git"
+    "url": "https://github.com/Mannyalfa/bookworm-search-engine"
   },
   "keywords": [],
-  "author": "",
+  "author": "Manny Alfaro",
   "license": "ISC",
   "dependencies": {
-    "@apollo/client": "^3.4.11",
+    "@apollo/react-hooks": "^4.0.0",
+    "apollo-server-express": "^2.25.2",
     "graphql": "^15.5.3",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "react-bootstrap": "^1.6.3"
   },
   "devDependencies": {
     "concurrently": "^5.2.0"

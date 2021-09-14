@@ -16,7 +16,16 @@ h6 {
   font-style: italic;
 }
 
+#worm {
+  padding-bottom: 1rem;
+}
+
 .jumbotron {
   padding-top: 0rem !important;
+  padding-bottom: 1.5rem !important;
+  margin-bottom: 0rem !important;
+}
 
+h2 {
+  color: #007bff !important;
 }
