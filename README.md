@@ -111,8 +111,7 @@ MIT [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https
 
 ![screenshot](https://github.com/Mannyalfa/bookworm-search-engine/blob/main/client/src/images/saved-books.jpg)
 
-## Walkthrough
-
+![screenshot](https://github.com/Mannyalfa/bookworm-search-engine/blob/main/client/src/images/responsive-page.jpg)
 
 ## Repository URL
 https://github.com/Mannyalfa/bookworm-search-engine
