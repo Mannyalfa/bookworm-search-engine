@@ -89,13 +89,13 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 ## Languages/Applications:
 
-    React
-    React Router
-    Apollo Server 
     MongoDB
-    GraphQL
     Express
+    React
     Node
+    Apollo Server 
+    React Router
+    GraphQL
 
 
 ## License
