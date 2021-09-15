@@ -7,15 +7,13 @@
 
 3. [License](#license)
 
-5. [Images](#images)
+4. [Images](#images)
 
-6. [Walkthrough](#walkthrough)
+5. [Repository URL](#repository-url)
 
-7. [Repository URL](#repository-url)
+6. [Deployed URL](#deployed-url)
 
-8. [Deployed URL](#deployed-url)
-
-9. [Credits](#credits)
+7. [Credits](#credits)
 
 ## Description
 This application searches for books by title, author or subject using the Google books API.
@@ -105,12 +103,19 @@ MIT [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https
 
   
 ## Images:
+Search Page
 ![screenshot](https://github.com/Mannyalfa/bookworm-search-engine/blob/main/client/src/images/search-page.jpg)
 
+Login/Signup Page
+![screenshot](https://github.com/Mannyalfa/bookworm-search-engine/blob/main/client/src/images/login.jpg)
+
+Search-Results
 ![screenshot](https://github.com/Mannyalfa/bookworm-search-engine/blob/main/client/src/images/search-results.jpg)
 
+Saved Book
 ![screenshot](https://github.com/Mannyalfa/bookworm-search-engine/blob/main/client/src/images/saved-books.jpg)
 
+Responsive Page (iPhone 6)
 ![screenshot](https://github.com/Mannyalfa/bookworm-search-engine/blob/main/client/src/images/responsive-page.jpg)
 
 ## Repository URL
